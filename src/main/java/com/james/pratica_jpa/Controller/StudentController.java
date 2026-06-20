@@ -1,5 +1,8 @@
 package com.james.pratica_jpa.Controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +21,14 @@ public class StudentController {
 private StudentService service;
 
 @PostMapping
-public Student Create(@Valid @RequestBody StudentDto dto) {
+public Student createStudent(@Valid @RequestBody StudentDto dto) {
       
         return service.create(dto);
     }
+@GetMapping("/list")
+public List<Student> listStudent(StudentDto dto){
+    
+    return service.getAll(dto);
+}
     
 }

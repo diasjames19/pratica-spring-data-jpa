@@ -34,9 +34,9 @@ public class StudentService implements IStudentService{
     }
 
     @Override
-    public List<Student> getAll(String dataDeNascimento) {
+    public List<Student> getAll(StudentDto dto) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAll'");
+        return getAll(dto);
     }
 
     @Override
