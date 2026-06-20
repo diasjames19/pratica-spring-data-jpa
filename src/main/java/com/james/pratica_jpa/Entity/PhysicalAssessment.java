@@ -32,8 +32,8 @@ public class PhysicalAssessment {
     private LocalDateTime Evaluationdate = LocalDateTime.now();
 
      @Column(name="current_height")
-     private double peso;
+     private double currentheight;
 
     @Column(name="current_weight")
-    private double altura;
+    private double currentweight;
 }

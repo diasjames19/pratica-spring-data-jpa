@@ -2,10 +2,13 @@ package com.james.pratica_jpa.Service.Interface;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.james.pratica_jpa.Entity.PhysicalAssessment;
 import com.james.pratica_jpa.Entity.Student;
 import com.james.pratica_jpa.Entity.Dto.StudentDto;
 
+@Service
 public interface IStudentService {
 
     Student create(StudentDto dto);

@@ -2,6 +2,7 @@ package com.james.pratica_jpa.Service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.james.pratica_jpa.Entity.PhysicalAssessment;
@@ -13,7 +14,8 @@ import com.james.pratica_jpa.Service.Interface.IStudentService;
 @Service
 public class StudentService implements IStudentService{
 
-    private StudentRepository repository;
+    @Autowired    
+    private  StudentRepository repository;
 
     @Override
     public Student create(StudentDto dto) {
@@ -36,6 +38,7 @@ public class StudentService implements IStudentService{
     @Override
     public List<Student> getAll() {
         // TODO Auto-generated method stub
+        System.out.println("Dados Retronado" + repository.findAll());
         return repository.findAll();
     }
 
