@@ -12,6 +12,8 @@ import com.james.pratica_jpa.Entity.Dto.StudentDto;
 import com.james.pratica_jpa.Repository.StudentRepository;
 import com.james.pratica_jpa.Service.Interface.IStudentService;
 
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 import lombok.AllArgsConstructor;
 
 
@@ -67,5 +69,5 @@ public class StudentService implements IStudentService{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getAllPhysicalAssessmentId'");
     }
-    
+   
 }
