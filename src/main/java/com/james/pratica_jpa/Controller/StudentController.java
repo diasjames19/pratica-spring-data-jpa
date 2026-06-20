@@ -2,7 +2,7 @@ package com.james.pratica_jpa.Controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,13 +14,16 @@ import com.james.pratica_jpa.Entity.Dto.StudentDto;
 import com.james.pratica_jpa.Service.StudentService;
 
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+
 
 @RestController
 @RequestMapping("/students")
+@AllArgsConstructor
 public class StudentController {
 
-@Autowired 
-private  StudentService service;
+
+private final StudentService service;
 
 @PostMapping
 public Student createStudent(@Valid @RequestBody StudentDto dto) {

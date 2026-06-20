@@ -1,8 +1,9 @@
 package com.james.pratica_jpa.Service;
 
+
+import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.james.pratica_jpa.Entity.PhysicalAssessment;
@@ -11,15 +12,22 @@ import com.james.pratica_jpa.Entity.Dto.StudentDto;
 import com.james.pratica_jpa.Repository.StudentRepository;
 import com.james.pratica_jpa.Service.Interface.IStudentService;
 
+import lombok.AllArgsConstructor;
+
+
 @Service
+@AllArgsConstructor
 public class StudentService implements IStudentService{
 
-    @Autowired    
-    private  StudentRepository repository;
+    
+    private  final StudentRepository repository;
 
     @Override
     public Student create(StudentDto dto) {
         Student newStudent = new Student();
+       
+        
+
         newStudent.setName(dto.getName());
         newStudent.setCpf(dto.getCpf());
         newStudent.setNeighborhood(dto.getNeighborhood());

@@ -1,15 +1,21 @@
 package com.james.pratica_jpa.Entity;
 
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -40,10 +46,13 @@ public class Student {
 
   private String neighborhood;
 
-@Column(name = "date_of_birth")
-  private LocalDate dateOfBirth;
+  @Column(name = "date_of_birth")
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private String dateOfBirth;
 
   @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE , fetch = FetchType.LAZY)
   @JsonIgnore
   private List<PhysicalAssessment> assessments = new ArrayList<>();
+
+  
 }
