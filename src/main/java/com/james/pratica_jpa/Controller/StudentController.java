@@ -26,7 +26,7 @@ public Student createStudent(@Valid @RequestBody StudentDto dto) {
         return service.create(dto);
 }
 @GetMapping
-public List<Student> listStudent(StudentDto dto){
+public List<Student> listStudent(){
     
     return service.getAll();
 }

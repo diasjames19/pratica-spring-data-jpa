@@ -2,6 +2,7 @@ package com.james.pratica_jpa.Entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,4 +30,10 @@ public class PhysicalAssessment {
     private Student student;
 
     private LocalDateTime Evaluationdate = LocalDateTime.now();
+
+     @Column(name="current_height")
+     private double peso;
+
+    @Column(name="current_weight")
+    private double altura;
 }
