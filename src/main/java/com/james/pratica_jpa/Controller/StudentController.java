@@ -15,7 +15,7 @@ import com.james.pratica_jpa.Service.StudentService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/students")
 public class StudentController {
 
 private StudentService service;
@@ -24,11 +24,11 @@ private StudentService service;
 public Student createStudent(@Valid @RequestBody StudentDto dto) {
       
         return service.create(dto);
-    }
-@GetMapping("/list")
+}
+@GetMapping
 public List<Student> listStudent(StudentDto dto){
     
-    return service.getAll(dto);
+    return service.getAll();
 }
     
 }

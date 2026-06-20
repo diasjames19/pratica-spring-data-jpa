@@ -34,9 +34,9 @@ public class StudentService implements IStudentService{
     }
 
     @Override
-    public List<Student> getAll(StudentDto dto) {
+    public List<Student> getAll() {
         // TODO Auto-generated method stub
-        return getAll(dto);
+        return repository.findAll();
     }
 
     @Override

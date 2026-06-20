@@ -21,7 +21,7 @@ public interface IStudentService {
    * Retorna os Alunos que estão no banco de dados.
    * @return Uma lista os Alunos que estão salvas no DB.
    */
-  List<Student> getAll(StudentDto dto);
+  List<Student> getAll();
 
   /**
    * Atualiza o Aluno.
