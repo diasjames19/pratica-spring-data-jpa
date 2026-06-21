@@ -2,6 +2,7 @@ package com.james.pratica_jpa.Entity.Dto;
 
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -34,8 +35,8 @@ public class StudentDto {
   private String neighborhood;
 
   @NotNull(message = "Prencha o campo corretamente.")
-  //@Past(message = "Data '${validatedValue}' é inválida.")
+  @Past(message = "Data '${validatedValue}' é inválida.")
   @JsonFormat(pattern = "yyyy-MM-dd")
-  private String dateOfBirth;
+  private LocalDate dateOfBirth;
   
 }

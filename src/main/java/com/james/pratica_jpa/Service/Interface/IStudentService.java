@@ -48,5 +48,5 @@ public interface IStudentService {
    */
   List<PhysicalAssessment> getAllPhysicalAssessmentId(Long id);
 
-
+  
 }

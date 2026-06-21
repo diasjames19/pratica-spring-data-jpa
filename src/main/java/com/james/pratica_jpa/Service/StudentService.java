@@ -1,7 +1,5 @@
 package com.james.pratica_jpa.Service;
 
-
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -12,56 +10,81 @@ import com.james.pratica_jpa.Entity.Dto.StudentDto;
 import com.james.pratica_jpa.Repository.StudentRepository;
 import com.james.pratica_jpa.Service.Interface.IStudentService;
 
-import jakarta.persistence.AttributeConverter;
-import jakarta.persistence.Converter;
 import lombok.AllArgsConstructor;
-
 
 @Service
 @AllArgsConstructor
-public class StudentService implements IStudentService{
+public class StudentService implements IStudentService {
 
-    
-    private  final StudentRepository repository;
+    private final StudentRepository repository;
 
     @Override
     public Student create(StudentDto dto) {
-        Student newStudent = new Student();
-       
-        
+        try {
 
-        newStudent.setName(dto.getName());
-        newStudent.setCpf(dto.getCpf());
-        newStudent.setNeighborhood(dto.getNeighborhood());
-        newStudent.setDateOfBirth(dto.getDateOfBirth());
+            Student newStudent = new Student();
+            newStudent.setName(dto.getName());
+            newStudent.setCpf(dto.getCpf());
+            newStudent.setNeighborhood(dto.getNeighborhood());
+            newStudent.setDateOfBirth(dto.getDateOfBirth());
 
-        return repository.save(newStudent);
-        
+            return repository.save(newStudent);
+
+        } catch (Exception e) {
+            System.out.println("Error in Create: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+
     }
 
     @Override
     public Student get(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Student not found!"));
     }
 
     @Override
     public List<Student> getAll() {
-        // TODO Auto-generated method stub
-        System.out.println("Dados Retronado" + repository.findAll());
-        return repository.findAll();
+        List<Student> students = repository.findAll();
+
+        System.out.println("Dados Retornados: " + students);
+
+        return students;
     }
 
     @Override
     public Student update(Long id, StudentDto dtoUpdate) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+
+        try {
+            boolean ckStudent = repository.existsById(id);
+
+            if (!ckStudent) {
+                throw new RuntimeException("Student not found!");
+            }
+            Student updateStudent = new Student();
+            updateStudent.setName(dtoUpdate.getName());
+            updateStudent.setCpf(dtoUpdate.getCpf());
+            updateStudent.setNeighborhood(dtoUpdate.getNeighborhood());
+            updateStudent.setDateOfBirth(dtoUpdate.getDateOfBirth());
+
+            return repository.save(updateStudent);
+
+        } catch (Exception e) {
+            System.out.println("Error in metodo Update: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+
     }
 
     @Override
     public void delete(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        Student student = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Student not found!"));
+
+        repository.delete(student);
     }
 
     @Override
@@ -69,5 +92,5 @@ public class StudentService implements IStudentService{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getAllPhysicalAssessmentId'");
     }
-   
+
 }

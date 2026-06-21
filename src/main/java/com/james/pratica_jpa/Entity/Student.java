@@ -48,7 +48,7 @@ public class Student {
 
   @Column(name = "date_of_birth")
   @JsonFormat(pattern = "yyyy-MM-dd")
-  private String dateOfBirth;
+  private LocalDate dateOfBirth;
 
   @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE , fetch = FetchType.LAZY)
   @JsonIgnore
